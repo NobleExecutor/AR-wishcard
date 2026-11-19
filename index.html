@@ -22,7 +22,7 @@
         device-orientation-permission-ui="enabled: false" vr-mode-ui="enabled: false" id="scene">
         <!-- Load an asset - GLTF Model -->
         <a-assets>
-            <a-asset-item id="Planet" response-type="arraybuffer" src="Little_Planet.glb"></a-asset-item>
+            <a-asset-item id="Card" response-type="arraybuffer" src="carte.glb"></a-asset-item>
         </a-assets>
 
         <!-- Add a camera -->
@@ -31,7 +31,7 @@
         <!-- call the entity and load the model -->
         <!-- define Position, Rotation and Scale of the model -->
         <a-entity mindar-image-target="targetIndex: 0">
-            <a-gltf-model animation-mixer position="0 0 0.5" rotation="90 0 0" scale="0.5 0.5 0.5" src="#Planet"
+            <a-gltf-model animation-mixer position="0 0 0" rotation="90 0 0" scale="0.5 0.5 0.5" src="#Planet"
                 id="DerPlanet"></a-gltf-model>
         </a-entity>
     </a-scene>
