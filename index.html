@@ -16,23 +16,26 @@
 
 <body>
     <!-- Create a Scene and identify the image target -->
-    <a-scene
-        mindar-image="imageTargetSrc: ./targets.mind; maxTrack: 1 filterMinCF:0.001; filterBeta:30; missTolerance:30;"
-        color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights"
+    <a-scene mindar-image="imageTargetSrc: ./targets.mind; maxTrack: 1; filterMinCF: 0.001; filterBeta: 30; missTolerance: 30;"
+        color-space="sRGB" renderer="colorManagement: true"
         device-orientation-permission-ui="enabled: false" vr-mode-ui="enabled: false" id="scene">
-        <!-- Load an asset - GLTF Model -->
+        <!-- Load an asset - GLTF Model (the id must match the src="#..." below) -->
         <a-assets>
-            <a-asset-item id="Card" response-type="arraybuffer" src="carte.glb"></a-asset-item>
+            <a-asset-item id="Card" response-type="arraybuffer" src="carte_ar.glb"></a-asset-item>
         </a-assets>
+
+        <!-- Lights (the glb no longer embeds any) -->
+        <a-light type="ambient" intensity="1.2"></a-light>
+        <a-light type="directional" intensity="1" position="1 2 3"></a-light>
 
         <!-- Add a camera -->
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <!-- call the entity and load the model -->
-        <!-- define Position, Rotation and Scale of the model -->
+        <!-- The target image is 1 unit wide; the card is 6.09 units wide in the glb,
+             so scale = 1 / 6.09 = 0.164. No rotation: the card already lies in the XY plane. -->
         <a-entity mindar-image-target="targetIndex: 0">
-            <a-gltf-model animation-mixer position="0 0 0" rotation="90 0 0" scale="0.5 0.5 0.5" src="#Planet"
-                id="DerPlanet"></a-gltf-model>
+            <a-gltf-model animation-mixer position="0 0 0" rotation="0 0 0" scale="0.164 0.164 0.164"
+                src="#Card" id="Card3D"></a-gltf-model>
         </a-entity>
     </a-scene>
 </body>
